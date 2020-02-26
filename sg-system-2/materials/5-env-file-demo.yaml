@@ -1,0 +1,7 @@
+parameters:
+  image: cirros-0.4.0-x86_64-disk
+  flavor: m1.nano
+  public_net_id: public
+  private_net_id: private
+  private_subnet_id: private-subnet
+ 
