@@ -33,7 +33,7 @@
 	docker run -dit -p 8080:80 --name myimage myimage:v1
 
 
-####cheat:
+#### cheat:
 	# buat 9 container sekaligus
 	for i in {1..9};do docker run -dit -p 808$i:80 httpd;done
 	# hapus paksa semua container yg mati dan jalan
