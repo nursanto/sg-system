@@ -91,10 +91,9 @@
 	exit
 
 
-#### b.1 Worker Node
-#### ssh to master node
-	cat /dev/null > /root/.ssh/known_hosts
-	ssh root@172.42.42.100
+#### b. Worker Node
+#### b.1 ssh to worker node
+	ssh root@172.42.42.101
 
 #### b.2 Update hosts file
 	cat >>/etc/hosts<<EOF
@@ -155,4 +154,50 @@
 	./joincluster.sh
 	exit
 
-### Akses to kubernetes cluster
+### c. Akses to kubernetes cluster
+#### c.1 install kubernetes client
+	cat >>/etc/hosts<<EOF
+	172.42.42.100 kmaster.example.com kmaster
+	172.42.42.101 kworker1.example.com kworker1
+	EOF
+
+	cat <<EOF > /etc/yum.repos.d/kubernetes.repo
+	[kubernetes]
+	name=Kubernetes
+	baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+	enabled=1
+	gpgcheck=1
+	repo_gpgcheck=1
+	gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+	EOF
+	yum install -y kubectl
+
+#### c.2 copy kubernetes credential
+	cd ~/
+	mkdir /root/.kube
+	scp root@172.42.42.100:/etc/kubernetes/admin.conf /root/.kube/config
+
+#### c.3 akses to kubernetes
+	kubectl cluster-info
+	kubectl run nginx --image nginx
+	kubectl get all
+	kubectl expose pod nginx --type NodePort --port 80
+	kubectl get all
+	curl kworker1:32647
+
+### d. install haproxy
+	yum -y install haproxy
+	cat >>/etc/haproxy/haproxy.cfg<<EOF
+	frontend nodeport
+	  bind *:30000-32767
+	  default_backend nodeport
+	  mode tcp
+	  option tcplog
+
+	backend nodeport
+	  balance roundrobin
+	  server kworker1 172.42.42.101
+	EOF
+
+	systemctl restart haproxy
+	systemctl enable haproxy
