@@ -30,14 +30,14 @@
 	cd sg-system/wfh/materials/Dockerfile-1
 	docker image build --tag myimage:v1 .
 	docker images
-	docker run -dit -p 8080:80 --name myimage myimage:v1
+	docker run -dit -p 8081:80 --name myimage myimage:v1
 
 ### 4. Dockerfile-2
 	cd ~
 	cd sg-system/wfh/materials/Dockerfile-2
 	docker image build --tag myimage:v2 .
 	docker images
-	docker run -dit -p 8081:80 --name myimage myimage:v2
+	docker run -dit -p 8082:80 --name myimage myimage:v2
 
 ### 5. Docker registry docker hub
 	docker tag myimage:v1 nursanto/myimage:1.0
