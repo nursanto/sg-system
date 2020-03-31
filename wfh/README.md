@@ -3,7 +3,7 @@
 ### Install Docker
 	yum install -y yum-utils device-mapper-persistent-data lvm2 
 	yum-config-manager  --add-repo https://download.docker.com/linux/centos/docker-ce.repo 
-	yum install docker-ce
+	yum -y install docker-ce
 	systemctl start docker
 
 ### Menjalankan container
@@ -47,10 +47,24 @@
 	docker push nursanto/myimage:1.0
 	docker push nursanto/myimage:2.0
 
-### 
+### Docker compose
+	curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose 
+	chmod +x /usr/local/bin/docker-compose 
+	ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose 
+	docker-compose --version 
+
+	cd ~
+	cd sg-system/wfh/materials/docker-compose
+	docker-compose up -d
+
+
 
 #### cheat:
 	# buat 9 container sekaligus
 	for i in {1..9};do docker run -dit -p 808$i:80 httpd;done
+
 	# hapus paksa semua container yg mati dan jalan
 	for i in $(docker ps -aq);do docker rm -f $i;done
+
+	# hapus semua image
+	for i in $(docker images -q);do docker rmi $i;done	
