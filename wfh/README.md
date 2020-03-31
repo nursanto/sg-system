@@ -1,5 +1,7 @@
 # WFH
 
+## Docker
+
 ### 1. Install Docker
 	yum install -y yum-utils device-mapper-persistent-data lvm2 
 	yum-config-manager  --add-repo https://download.docker.com/linux/centos/docker-ce.repo 
@@ -60,8 +62,6 @@
 	cd sg-system/wfh/materials/docker-compose
 	docker-compose up -d
 
-
-
 #### cheat:
 	# buat 9 container sekaligus
 	for i in {1..9};do docker run -dit -p 808$i:80 httpd;done
@@ -71,3 +71,4 @@
 
 	# hapus semua image
 	for i in $(docker images -q);do docker rmi $i;done	
+
