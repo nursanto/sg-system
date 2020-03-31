@@ -40,12 +40,15 @@
 	docker run -dit -p 8082:80 --name myimage myimage:v2
 
 ### 5. Docker registry docker hub
-	docker tag myimage:v1 nursanto/myimage:1.0
-	docker tag myimage:v2 nursanto/myimage:2.0
+	docker tag myimage:v1 nursanto/myimage:v1
+	docker tag myimage:v2 nursanto/myimage:v2
 	docker images
 	docker login
-	docker push nursanto/myimage:1.0
-	docker push nursanto/myimage:2.0
+	docker push nursanto/myimage:v1
+	docker push nursanto/myimage:v2
+
+	docker run -dit -p 8081:80 --name myimage-1 nursanto/myimage:v1
+	docker run -dit -p 8082:80 --name myimage-2 nursanto/myimage:v2
 
 ### 6. Docker compose
 	curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose 
