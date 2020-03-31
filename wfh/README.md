@@ -24,14 +24,30 @@
 	echo "hello world from external storage" > index.html
 	docker run -dit --name my-apache-app -p 8080:80 -v "$PWD":/usr/local/apache2/htdocs/ httpd:2.4
 
-### Dockerfile
+### Dockerfile-1
 	cd ~
 	git clone https://github.com/nursanto/sg-system.git
-	cd sg-system/wfh/materials/
+	cd sg-system/wfh/materials/Dockerfile-1
 	docker image build --tag myimage:v1 .
 	docker images
 	docker run -dit -p 8080:80 --name myimage myimage:v1
 
+### Dockerfile-2
+	cd ~
+	cd sg-system/wfh/materials/Dockerfile-2
+	docker image build --tag myimage:v2 .
+	docker images
+	docker run -dit -p 8081:80 --name myimage myimage:v2
+
+### Docker registry docker hub
+	docker tag myimage:v1 nursanto/myimage:1.0
+	docker tag myimage:v2 nursanto/myimage:2.0
+	docker images
+	docker login
+	docker push nursanto/myimage:1.0
+	docker push nursanto/myimage:2.0
+
+### 
 
 #### cheat:
 	# buat 9 container sekaligus
