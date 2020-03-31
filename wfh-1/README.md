@@ -29,14 +29,14 @@
 ### 3. Dockerfile-1
 	cd ~
 	git clone https://github.com/nursanto/sg-system.git
-	cd sg-system/wfh/materials/Dockerfile-1
+	cd sg-system/wfh-1/materials/Dockerfile-1
 	docker image build --tag myimage:v1 .
 	docker images
 	docker run -dit -p 8081:80 --name myimage myimage:v1
 
 ### 4. Dockerfile-2
 	cd ~
-	cd sg-system/wfh/materials/Dockerfile-2
+	cd sg-system/wfh-1/materials/Dockerfile-2
 	docker image build --tag myimage:v2 .
 	docker images
 	docker run -dit -p 8082:80 --name myimage myimage:v2
@@ -59,7 +59,7 @@
 	docker-compose --version 
 
 	cd ~
-	cd sg-system/wfh/materials/docker-compose
+	cd sg-system/wfh-1/materials/docker-compose
 	docker-compose up -d
 
 #### cheat:
