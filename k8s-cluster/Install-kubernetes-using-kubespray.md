@@ -1,6 +1,6 @@
 # Install kubernetes using kubespray
 
-## Post Install do on all node
+## Post Install, do on all node
 	# check partition size and extend if needed
 	fdis -l
 	lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv
