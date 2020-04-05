@@ -9,7 +9,7 @@
 
 ### Create vm using vagrant
 	git clone https://github.com/nursanto/sg-system.git
-	cd sg-system/wfh-2/materials/
+	cd sg-system/wfh-2/vagrant/
 	vagrant status
 	vagrant up
 	vagrant status
