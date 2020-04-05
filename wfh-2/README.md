@@ -69,7 +69,7 @@
 	EOF
 
 #### a.10 Install Kubernetes
-	yum install -y kubeadm kubelet kubectl
+	yum install -y kubeadm-1.17.4 kubelet-1.17.4 kubectl-1.17.4
 
 #### a.11 Start and Enable kubelet service
 	systemctl enable kubelet
@@ -143,7 +143,7 @@
 	EOF
 
 #### b.10 Install Kubernetes
-	yum install -y kubeadm kubelet kubectl
+	yum install -y kubeadm-1.17.4 kubelet-1.17.4 kubectl-1.17.4
 
 #### b.11 Start and Enable kubelet service
 	systemctl enable kubelet
