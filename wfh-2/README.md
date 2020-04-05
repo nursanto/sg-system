@@ -179,9 +179,9 @@
 
 #### c.3 akses to kubernetes
 	kubectl cluster-info
-	kubectl run nginx --image nginx
+	kubectl run nginx --image nursanto/nginx-hello-world
 	kubectl get all
-	kubectl expose pod nginx --type NodePort --port 80
+	kubectl expose deploy nginx --type NodePort --port 80
 	kubectl get all
 	curl kworker1:32647
 
