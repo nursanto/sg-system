@@ -40,6 +40,9 @@
 
 	# file containing the configuration
 	cat inventory/mycluster/group_vars/k8s-cluster/k8s-cluster.yml
+	
+	# addons
+	cat inventory/mycluster/group_vars/k8s-cluster/addons.yml
 
 	# test ansible conectifity 
 	ansible all -i inventory/mycluster/hosts.yaml -m ping
