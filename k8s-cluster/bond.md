@@ -1,3 +1,6 @@
+### note bonding
+
+'''
 network:
     bonds:
         bond0:
@@ -29,3 +32,4 @@ network:
             id: 20
             link: bond0
             nameservers: {}
+'''
