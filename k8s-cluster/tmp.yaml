@@ -1,0 +1,26 @@
+network:
+    bonds:
+        bond0:
+            dhcp4: false
+            interfaces:
+            - eno1
+            - eno2
+            nameservers: {}
+            parameters:
+                lacp-rate: slow
+                mode: 802.3ad
+                transmit-hash-policy: layer2
+    ethernets:
+        eno1: {}
+        eno2: {}
+    version: 2
+    vlans:
+        bond0.20:
+            addresses:
+            - 20.20.20.20/24
+            gateway4: 20.20.20.1
+            nameservers:
+              search: [google.com]
+              addresses: [1.1.1.1, 8.8.8.8]            
+            id: 20
+            link: bond0
