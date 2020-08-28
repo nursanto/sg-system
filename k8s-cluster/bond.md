@@ -1,6 +1,6 @@
 ### note bonding
 
-```
+```yaml
 network:
     bonds:
         bond0:
@@ -37,7 +37,7 @@ network:
 
 
 
-```
+```yaml
 network:
     version: 2
     renderer: networkd
